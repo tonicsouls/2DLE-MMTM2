@@ -4,6 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import CvModal from './components/CvModal';
 import VideoGalleryModal from './components/VideoGalleryModal';
 import MathMonModal from './components/MathMonModal';
+import GreatestHitsModal from './components/PlaybookModal';
+
+interface Experience {
+    company: string;
+    role: string;
+    details: string[];
+    logo: string;
+}
 
 const App = () => {
     const [isCvModalOpen, setIsCvModalOpen] = useState(false);
@@ -11,6 +19,7 @@ const App = () => {
     const [galleryInitialVideo, setGalleryInitialVideo] = useState('gKJgscVed_0');
     const [isMathMonModalOpen, setIsMathMonModalOpen] = useState(false);
     const [activeSkillTab, setActiveSkillTab] = useState('methodologies');
+    const [isGreatestHitsModalOpen, setIsGreatestHitsModalOpen] = useState(false);
 
     const openVideoGallery = (videoId: string) => {
         setGalleryInitialVideo(videoId);
@@ -20,13 +29,20 @@ const App = () => {
     // Smooth scrolling for nav links
     useEffect(() => {
         const handleNavClick = (e: MouseEvent) => {
-            const targetId = (e.target as HTMLAnchorElement).getAttribute('href')?.substring(1);
+            const target = e.target as HTMLAnchorElement;
+            const targetId = target.getAttribute('href')?.substring(1);
             if (!targetId) return;
 
             if (targetId === 'cv') {
                  e.preventDefault();
                  setIsCvModalOpen(true);
                  return;
+            }
+            
+            if (targetId === 'playbook') {
+                e.preventDefault();
+                setIsGreatestHitsModalOpen(true);
+                return;
             }
 
             const targetElement = document.getElementById(targetId);
@@ -76,77 +92,144 @@ const App = () => {
       { name: "U of Arkansas", role: "SLED Sales", logo: "https://logo.clearbit.com/uark.edu" },
     ];
 
-    const experience = [
+    const experience: Experience[] = [
         {
             company: "Pfizer",
             role: "Enterprise Account Executive at Seeq",
-            story: "Grew Pfizer account from a $250k transaction into a $1M+ multi-year strategic ERP-adjacent engagement by expanding from R&D to global manufacturing.",
+            details: [
+                "Successfully expanded the Pfizer account from an initial $250k ARR to a multi-year strategic agreement exceeding $1M.",
+                "Bridged the solution from R&D into global manufacturing, demonstrating enterprise-wide value.",
+                "Positioned the analytics solution as a critical component adjacent to their core ERP system."
+            ],
             logo: "https://logo.clearbit.com/pfizer.com"
         },
         {
             company: "Energy Transfer",
             role: "Senior Enterprise AE at Gluware",
-            story: "Closed a $1.7M network automation modernization deal, exceeding quota by 225%. Pivoted the deal from OpEx to CapEx to align with the CFO's strategy.",
+            details: [
+                "Secured a landmark $1.7M deal for network automation and modernization.",
+                "Exceeded annual quota by 225% through strategic negotiation and value demonstration.",
+                "Successfully pivoted the deal from an operational expenditure (OpEx) to a capital expenditure (CapEx) to align with the client's C-level financial strategy."
+            ],
             logo: "https://logo.clearbit.com/energytransfer.com"
         },
         {
             company: "IBM",
             role: "Sales Director at Papyrus Software",
-            story: "Established a strategic partnership with IBM, achieving Gold Partner status by aligning WatsonX and Content Management solutions into client roadmaps.",
+            details: [
+                "Initiated and cultivated a strategic partnership with IBM, culminating in Gold Partner status.",
+                "Integrated IBM WatsonX and advanced Content Management solutions into joint client roadmaps.",
+                "Drove pipeline generation and collaborative selling motions with the IBM sales ecosystem."
+            ],
             logo: "https://logo.clearbit.com/ibm.com"
         },
         {
             company: "Walmart",
             role: "Senior Enterprise AE at Gluware",
-            story: "Led a cross-functional team to respond to a complex RFP under a tight deadline, winning the RFP and moving into a testing stage for a major network automation solution.",
+            details: [
+                "Led a multi-disciplinary team (Sales, Engineering, Product) to win a complex and highly competitive Request for Proposal (RFP).",
+                "Orchestrated the response under an aggressive deadline, ensuring all technical and business requirements were met.",
+                "Successfully advanced the engagement to a paid Proof of Concept (POC) stage for a large-scale network automation overhaul."
+            ],
             logo: "https://logo.clearbit.com/walmart.com"
         },
         {
             company: "Krist Oil",
             role: "Sales Executive at Pinnacle",
-            story: "Drove to Michigan to personally understand a customer's needs for a loyalty program. Hired a local student to manage it, resulting in a 15% increase in customer retention.",
+            details: [
+                "Demonstrated extreme customer-centricity by traveling to Michigan to personally diagnose the client's needs for a new loyalty program.",
+                "Developed a hyper-local solution by hiring a student from the community to manage the program, fostering local engagement.",
+                "Achieved a 15% increase in customer retention as a direct result of the tailored program."
+            ],
             logo: "https://logo.clearbit.com/kristoil.com"
         },
         {
             company: "Bears Den",
             role: "Sales Executive at Pinnacle",
-            story: "Developed a culturally-sensitive, customized kiosk solution for a Native American-owned business, implementing a phased rollout from restaurant to concessions.",
+            details: [
+                "Architected a bespoke kiosk solution with deep cultural sensitivity for a Native American-owned business.",
+                "Designed and executed a strategic phased rollout, starting with the restaurant and expanding to concession stands.",
+                "Ensured the technology respected and enhanced the unique business environment of the client."
+            ],
             logo: "https://logo.clearbit.com/pinncorp.com"
+        },
+        {
+            company: "Double Quick",
+            role: "Sales Executive at Pinnacle",
+            details: [
+                "Architected and deployed a CPG-integrated loyalty platform to drive in-store sales growth.",
+                "Contributed to a 33% year-over-year increase in in-store revenue across nearly 150 locations.",
+                "Leveraged customer data analytics to design a rewards program that resonated with local demographics and purchasing habits."
+            ],
+            logo: "https://www.doublequick.com/wp-content/uploads/2021/03/dq-logo-notag.png"
+        },
+        {
+            company: "Refuel Market",
+            role: "Sales Executive at Pinnacle",
+            details: [
+                "Led the strategy for a cohesive loyalty program following Refuel's acquisition of Double Quick, unifying the customer experience.",
+                "Designed a cross-promotional rewards structure that increased customer retention and average transaction value across a growing network of 230+ locations.",
+                "Utilized data analysis to structure partnerships and balance customer-perceived value with corporate profitability, ensuring a significant positive ROI."
+            ],
+            logo: "https://logo.clearbit.com/refuelmarket.com"
         },
         {
             company: "HollyFrontier",
             role: "Senior Enterprise AE at Gluware",
-            story: "Secured a six-figure deal with a persistent and empathetic approach. Made a cold call to a VP on a late Friday to align the automation solution with their ecosystem.",
+            details: [
+                "Closed a key six-figure deal through persistent, empathetic, and strategic outreach.",
+                "Made a crucial cold call to a Vice President late on a Friday afternoon, which was instrumental in closing the deal.",
+                "Successfully aligned the automation solution with the client's existing technology ecosystem and strategic goals."
+            ],
             logo: "https://logo.clearbit.com/hollyfrontier.com"
         },
         {
             company: "Toyota",
             role: "Enterprise Sales at Seeq & Dragonboat",
-            story: "Implemented an edge analytics solution to reduce line production imperfections and closed a strategic $56k deal with Toyota Connected for a Jira automation solution.",
+            details: [
+                "At Seeq, deployed an edge analytics solution at a Toyota manufacturing plant to identify and reduce production line imperfections, improving quality and efficiency.",
+                "At Dragonboat, closed a strategic $56k deal with Toyota Connected to implement a Jira automation and enterprise planning solution."
+            ],
             logo: "https://logo.clearbit.com/toyota.com"
         },
         {
             company: "Sunrun",
             role: "Enterprise AE at HyperVelocity",
-            story: "Won a key deal by building a strong relationship with the procurement manager and working collaboratively with the CFO to create flexible financial structures.",
+            details: [
+                "Navigated a complex procurement process by building a strong, collaborative relationship with the procurement manager.",
+                "Worked directly with the client's CFO to structure flexible financial terms that met their M&A integration budget.",
+                "Secured the deal against competitors by focusing on partnership and financial creativity."
+            ],
             logo: "https://logo.clearbit.com/sunrun.com"
         },
         {
             company: "Cox Automotive",
             role: "Senior AE at Dragonboat.io",
-            story: "Led an 8-week Proof of Concept (POC) with 500+ users, collaborating with their Center of Excellence. Successfully configured dashboards, KPIs, and OKR tracking.",
+            details: [
+                "Managed a large-scale, 8-week paid Proof of Concept (POC) with over 500 active users.",
+                "Collaborated closely with the client's Center of Excellence to ensure alignment and successful adoption.",
+                "Custom-configured dashboards, KPIs, and OKR tracking systems to meet specific enterprise planning needs."
+            ],
             logo: "https://logo.clearbit.com/coxautoinc.com"
         },
         {
             company: "Covestro",
             role: "Sales Executive at Pinnacle",
-            story: "Navigated a complex international deal, demonstrating cultural awareness between US and German teams. Gained valuable experience despite a lost deal.",
+            details: [
+                "Managed a complex international sales cycle involving executive teams from both the US and Germany.",
+                "Demonstrated strong cultural awareness and adeptly navigated differing business practices.",
+                "While the deal was ultimately lost, the experience provided invaluable insights into global negotiations and enterprise decision-making."
+            ],
             logo: "https://logo.clearbit.com/covestro.com"
         },
         {
             company: "HHS-FDA",
             role: "Sales Director at Papyrus Software",
-            story: "Maintained strong executive-level relationships through a delayed project with the FDA's Center for Tobacco Products, keeping it on track despite budget holds.",
+            details: [
+                "Sustained a long-term, high-value project with the FDA's Center for Tobacco Products through multiple budget holds and delays.",
+                "Maintained strong relationships with executive-level government stakeholders, ensuring project continuity.",
+                "Successfully kept the engagement on track, demonstrating resilience and strategic account management in the public sector."
+            ],
             logo: "https://logo.clearbit.com/fda.gov"
         },
     ];
@@ -247,6 +330,7 @@ const App = () => {
             {isCvModalOpen && <CvModal onClose={() => setIsCvModalOpen(false)} />}
             {isVideoGalleryOpen && <VideoGalleryModal startVideoId={galleryInitialVideo} onClose={() => setIsVideoGalleryOpen(false)} />}
             {isMathMonModalOpen && <MathMonModal onClose={() => setIsMathMonModalOpen(false)} />}
+            {isGreatestHitsModalOpen && <GreatestHitsModal engagements={experience} onClose={() => setIsGreatestHitsModalOpen(false)} />}
             
             <header className="sticky top-0 z-30 glass-card">
                 <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -255,7 +339,7 @@ const App = () => {
                     </a>
                     <div className="hidden md:flex items-center space-x-8">
                         <a href="#story" className="font-raleway font-semibold text-gray-300 hover:text-white transition">My Story</a>
-                        <a href="#playbook" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Playbook</a>
+                        <a href="#playbook" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Greatest Hits</a>
                         <a href="#lab" className="font-raleway font-semibold text-gray-300 hover:text-white transition">The Lab</a>
                         <a href="#journey" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Timeline</a>
                         <a href="#cv" className="font-raleway font-semibold text-gray-300 hover:text-white transition">CV/Résumé</a>
@@ -313,13 +397,64 @@ const App = () => {
                     <h2 className="font-montserrat text-4xl md:text-5xl font-bold text-center">
                         Greatest Hits: <span className="text-gold">The Playbook</span>
                     </h2>
-                    <p className="text-center text-gray-400 mt-4 mb-12 max-w-2xl mx-auto">
-                        A dynamic showcase of key wins and strategic engagements across multiple industries.
+                    <p className="text-center text-gray-400 mt-4 mb-12 max-w-3xl mx-auto">
+                        A dynamic showcase of key wins and strategic engagements across multiple industries. Below is a highlight of my performance, and you can click any card to see the full list of achievements.
                     </p>
+
+                    <div className="max-w-5xl mx-auto glass-card rounded-2xl p-8 md:p-10 mb-16">
+                        <h3 className="font-montserrat text-3xl font-bold text-center mb-8">Proven Track Record of Overachievement</h3>
+                        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-stretch">
+                            {/* Left Card */}
+                            <div className="flex-1 bg-gradient-to-br from-blue-900/80 via-blue-900/50 to-slate-900/70 p-8 rounded-xl flex flex-col justify-center text-center shadow-lg border border-blue-800/50">
+                                <p className="text-lg text-blue-300 font-semibold">Quota Exceeded at Gluware Inc.</p>
+                                <p className="font-montserrat text-7xl md:text-8xl font-black text-amber-400 my-4 text-glow">225%</p>
+                                <p className="text-gray-300 max-w-xs mx-auto">Turned a $1M quota into $2M+ in secured contracts, outperforming a team of 13 peers.</p>
+                            </div>
+                            
+                            {/* Right Chart */}
+                            <div className="flex-[1.5]">
+                                <h4 className="text-2xl font-bold text-white">Quota vs. Achievement</h4>
+                                <p className="text-gray-400 mt-1">Visualizing the performance that demonstrates consistent execution and the ability to substantially surpass targets.</p>
+                                <div className="mt-6 h-64 relative pr-4">
+                                    {/* Y-Axis Labels */}
+                                    <div className="absolute left-0 -top-2 bottom-0 flex flex-col justify-between text-xs text-gray-500 h-full">
+                                        <span>$2.5M</span>
+                                        <span>$2.0M</span>
+                                        <span>$1.5M</span>
+                                        <span>$1.0M</span>
+                                        <span>$0.5M</span>
+                                        <span className="pb-4">$0M</span>
+                                    </div>
+                                    
+                                    {/* Bars Container */}
+                                    <div className="absolute left-12 right-0 bottom-0 h-full flex items-end justify-around border-l border-b border-gray-700 pl-8">
+                                        {/* Quota Bar */}
+                                        <div className="text-center w-24">
+                                            <div style={{ height: '40%' }} className="bg-purple-600 rounded-t-md transition-all duration-700 ease-out hover:bg-purple-500 shadow-lg"></div>
+                                            <p className="mt-2 text-sm text-gray-400">Quota</p>
+                                        </div>
+                                        {/* Achievement Bar */}
+                                        <div className="text-center w-24">
+                                            <div style={{ height: '90%' }} className="bg-amber-500 rounded-t-md transition-all duration-700 ease-out hover:bg-amber-400 shadow-lg"></div>
+                                            <p className="mt-2 text-sm text-gray-400">Achievement</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                      <div className="marquee-container">
                         <div className="marquee-track marquee-track--playbook">
                             {[...experience, ...experience].map((item, index) => (
-                                <div key={index} className="flex-shrink-0 w-[380px] h-[220px] glass-card rounded-2xl p-6 mx-4 flex flex-col justify-between">
+                                <div 
+                                    key={index} 
+                                    className="flex-shrink-0 w-[380px] h-[220px] glass-card rounded-2xl p-6 mx-4 flex flex-col justify-between cursor-pointer transition-transform duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
+                                    onClick={() => setIsGreatestHitsModalOpen(true)}
+                                    role="button"
+                                    tabIndex={0}
+                                    aria-label={`View details for ${item.company}`}
+                                >
                                     <div>
                                         <div className="flex items-center mb-3">
                                             <img src={item.logo} alt={`${item.company} logo`} className="h-8 w-8 rounded-full mr-3 bg-white p-1" />
@@ -328,7 +463,7 @@ const App = () => {
                                                 <p className="text-blue-400 text-xs font-semibold">{item.role}</p>
                                             </div>
                                         </div>
-                                        <p className="text-gray-300 text-sm leading-snug">{item.story}</p>
+                                        <p className="text-gray-300 text-sm leading-snug line-clamp-4">{item.details.join(' ')}</p>
                                     </div>
                                 </div>
                             ))}
