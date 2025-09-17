@@ -5,6 +5,10 @@ import CvModal from './components/CvModal';
 import VideoGalleryModal from './components/VideoGalleryModal';
 import MathMonModal from './components/MathMonModal';
 import GreatestHitsModal from './components/PlaybookModal';
+import TechCompassModal from './components/TechCompassModal';
+import PresentationModal from './components/PresentationModal';
+import FamilyReunionModal from './components/FamilyReunionModal';
+import CareerCatalystModal from './components/CareerCatalystModal';
 
 interface Experience {
     company: string;
@@ -18,8 +22,12 @@ const App = () => {
     const [isVideoGalleryOpen, setIsVideoGalleryOpen] = useState(false);
     const [galleryInitialVideo, setGalleryInitialVideo] = useState('gKJgscVed_0');
     const [isMathMonModalOpen, setIsMathMonModalOpen] = useState(false);
+    const [isTechCompassModalOpen, setIsTechCompassModalOpen] = useState(false);
     const [activeSkillTab, setActiveSkillTab] = useState('methodologies');
     const [isGreatestHitsModalOpen, setIsGreatestHitsModalOpen] = useState(false);
+    const [isPresentationModalOpen, setIsPresentationModalOpen] = useState(false);
+    const [isFamilyReunionModalOpen, setIsFamilyReunionModalOpen] = useState(false);
+    const [isCareerCatalystModalOpen, setIsCareerCatalystModalOpen] = useState(false);
 
     const openVideoGallery = (videoId: string) => {
         setGalleryInitialVideo(videoId);
@@ -330,7 +338,11 @@ const App = () => {
             {isCvModalOpen && <CvModal onClose={() => setIsCvModalOpen(false)} />}
             {isVideoGalleryOpen && <VideoGalleryModal startVideoId={galleryInitialVideo} onClose={() => setIsVideoGalleryOpen(false)} />}
             {isMathMonModalOpen && <MathMonModal onClose={() => setIsMathMonModalOpen(false)} />}
+            {isTechCompassModalOpen && <TechCompassModal onClose={() => setIsTechCompassModalOpen(false)} />}
             {isGreatestHitsModalOpen && <GreatestHitsModal engagements={experience} onClose={() => setIsGreatestHitsModalOpen(false)} />}
+            {isPresentationModalOpen && <PresentationModal onClose={() => setIsPresentationModalOpen(false)} />}
+            {isFamilyReunionModalOpen && <FamilyReunionModal onClose={() => setIsFamilyReunionModalOpen(false)} />}
+            {isCareerCatalystModalOpen && <CareerCatalystModal onClose={() => setIsCareerCatalystModalOpen(false)} />}
             
             <header className="sticky top-0 z-30 glass-card">
                 <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
@@ -341,6 +353,7 @@ const App = () => {
                         <a href="#story" className="font-raleway font-semibold text-gray-300 hover:text-white transition">My Story</a>
                         <a href="#playbook" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Greatest Hits</a>
                         <a href="#lab" className="font-raleway font-semibold text-gray-300 hover:text-white transition">The Lab</a>
+                        <a href="#presentations" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Presentations</a>
                         <a href="#journey" className="font-raleway font-semibold text-gray-300 hover:text-white transition">Timeline</a>
                         <a href="#cv" className="font-raleway font-semibold text-gray-300 hover:text-white transition">CV/Résumé</a>
                     </div>
@@ -492,6 +505,54 @@ const App = () => {
                  <section id="lab" className="py-20">
                      <h2 className="font-montserrat text-4xl font-bold text-center mb-12">The <span className="text-gold">Lab</span></h2>
                      <div className="grid md:grid-cols-2 gap-8">
+                        {/* Career Catalyst */}
+                        <div
+                            className="glass-card rounded-2xl p-8 cursor-pointer group md:col-span-2"
+                            onClick={() => setIsCareerCatalystModalOpen(true)}
+                        >
+                            <div className="grid md:grid-cols-2 gap-8 items-center h-full">
+                                <div className="flex flex-col h-full">
+                                    <h3 className="text-3xl font-bold text-white mb-2">Career Catalyst</h3>
+                                    <p className="text-xl text-blue-400 font-semibold mb-4">AI-Powered Career Toolkit</p>
+                                    <p className="text-gray-300 text-base mb-6 flex-grow">
+                                        An AI-driven web application designed as a comprehensive toolkit for professional career development. It guides users through a structured journey to create highly personalized career materials.
+                                    </p>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); setIsCareerCatalystModalOpen(true); }}
+                                        className="font-semibold text-lg text-gold hover:text-white transition self-start mt-auto"
+                                    >
+                                        Launch Application ↗
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-center">
+                                    <img src="https://i.imgur.com/sYmY1OR.png" alt="Career Catalyst Application" className="rounded-xl shadow-lg w-full h-auto object-contain max-h-96" />
+                                </div>
+                            </div>
+                        </div>
+                        {/* TechCompass */}
+                        <div
+                            className="glass-card rounded-2xl p-8 cursor-pointer group"
+                            onClick={() => setIsTechCompassModalOpen(true)}
+                        >
+                            <div className="grid md:grid-cols-3 gap-8 items-center h-full">
+                                <div className="md:col-span-2 flex flex-col h-full">
+                                    <h3 className="text-3xl font-bold text-white mb-2">TechCompass</h3>
+                                    <p className="text-xl text-blue-400 font-semibold mb-4">Founder & Creator</p>
+                                    <p className="text-gray-300 text-base mb-6 flex-grow">
+                                        A dedicated AI assistant that sees your screen to solve tech issues. It provides step-by-step guidance with large, plain-English text and optional button-based responses to help you get clarity and resolve tasks quickly.
+                                    </p>
+                                    <button
+                                        onClick={(e) => { e.stopPropagation(); setIsTechCompassModalOpen(true); }}
+                                        className="font-semibold text-lg text-gold hover:text-white transition self-start mt-auto"
+                                    >
+                                        Launch Assistant ↗
+                                    </button>
+                                </div>
+                                <div className="flex items-center justify-center">
+                                    <img src="https://raw.githubusercontent.com/tonicsouls/slides-/be11bf8739c25216519e69867ab25e0f22fd0907/0902%20images/techcompass%201.png" alt="TechCompass Application" className="rounded-xl shadow-lg w-full h-auto object-contain max-h-96" />
+                                </div>
+                            </div>
+                        </div>
                         {/* PDI Product Owner */}
                         <div className="glass-card rounded-2xl p-6">
                             <div className="grid md:grid-cols-2 gap-6 items-center h-full">
@@ -566,6 +627,26 @@ const App = () => {
                                    </div>
                                </div>
                            </div>
+                        </div>
+                        {/* Family Reunion AI Designer */}
+                        <div
+                            className="glass-card rounded-2xl p-8 flex flex-col h-full cursor-pointer group"
+                            onClick={() => setIsFamilyReunionModalOpen(true)}
+                        >
+                            <h3 className="text-2xl font-bold text-white mb-2">Family Reunion T-Shirt AI Designer</h3>
+                            <p className="text-blue-400 font-semibold mb-4">AI-Powered Apparel Design</p>
+                            <div className="my-4 rounded-lg overflow-hidden">
+                                <img src="https://raw.githubusercontent.com/tonicsouls/slides-/b57c256c7b7abed6a3841c1f855a21b98276553c/0902%20images/vtryon.png" alt="Family Reunion AI Designer App" className="w-full h-auto object-cover"/>
+                            </div>
+                            <p className="text-gray-300 mb-6 text-sm flex-grow">
+                                An AI-powered tool to design custom t-shirts for family events. Use the Prompt Copilot to generate unique, print-ready designs, get instant mockups, and simulate pre-flight checks for a seamless ordering process.
+                            </p>
+                            <button
+                                onClick={(e) => { e.stopPropagation(); setIsFamilyReunionModalOpen(true); }}
+                                className="font-semibold text-gold hover:text-white transition self-start mt-auto group-hover:underline"
+                            >
+                                Launch Designer ↗
+                            </button>
                         </div>
                      </div>
                  </section>
@@ -651,6 +732,39 @@ const App = () => {
                     </div>
                 </section>
 
+                 <section id="presentations" className="py-20">
+                    <h2 className="font-montserrat text-4xl font-bold text-center mb-12">Presentations & <span className="text-gold">Media</span></h2>
+                    <div
+                        className="max-w-5xl mx-auto glass-card rounded-2xl p-8 md:p-12 cursor-pointer group transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20"
+                        onClick={() => setIsPresentationModalOpen(true)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label="Launch The 1% Better Story presentation"
+                    >
+                        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                            <div className="flex flex-col h-full">
+                                <p className="text-blue-400 font-semibold mb-2 text-sm uppercase tracking-widest">The 1% Better Story</p>
+                                <h3 className="text-4xl font-bold text-white mb-4">AI in the Job Search</h3>
+                                <p className="text-gray-300 mb-6 flex-grow">
+                                    An AI-powered presentation on leveraging your experience with modern tools. This session explores how to use AI as a force multiplier to make your job search workflow 1% better, turning perseverance into promise.
+                                </p>
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); setIsPresentationModalOpen(true); }}
+                                    className="font-semibold text-lg text-gold hover:text-white transition self-start mt-auto group-hover:underline"
+                                >
+                                    Launch Presentation ↗
+                                </button>
+                            </div>
+                            <div className="flex items-center justify-center">
+                                <img 
+                                    src="https://raw.githubusercontent.com/tonicsouls/slides-/ddc5fc21dcdb3ea3b1749faa34b9b4230ade78e6/0902%20images/Gemini_Generated_Image_pibd7cpibd7cpibd.png" 
+                                    alt="1% Better Story Presentation Slide" 
+                                    className="rounded-xl shadow-lg w-full h-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </main>
 
             <footer id="contact" className="bg-gray-900 mt-20 border-t border-gray-800">

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1% Better Series</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@700;900&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+        background-color: #0d111c;
+        color: #c9d1d9;
+        overflow: hidden;
+      }
+      .font-montserrat {
+        font-family: 'Montserrat', sans-serif;
+      }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+    <div class="w-full h-full flex flex-col max-w-screen-2xl mx-auto p-4 md:p-8">
+        <!-- Header Bar -->
+        <header class="flex-shrink-0 w-full bg-[#161b22] p-4 rounded-t-xl border-b border-gray-700">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center text-sm font-bold text-blue-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-yellow-400" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    1% Better Series
+                </div>
+                <div class="text-xs text-gray-400">
+                    2 / 16
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-grow bg-[#0d111c] rounded-b-xl p-6 md:p-12 flex items-center">
+            <div class="grid md:grid-cols-2 gap-12 items-center w-full">
+                <!-- Left Text Column -->
+                <div>
+                    <p class="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-2">Core Idea</p>
+                    <h1 class="font-montserrat text-5xl md:text-6xl font-black text-white leading-tight">The New Shovels</h1>
+                    <p class="mt-4 text-xl text-gray-300">
+                        We're still "digging." The biggest change isn't what we dig for, but the tools we use.
+                    </p>
+                    <p class="mt-6 text-gray-400 text-base border-l-2 border-blue-500 pl-4">
+                        <strong>Old Shovel:</strong> Manual labor for centuries; Newcomen's 1712 engine pumped water from mines—replacing hundreds of literal shovels.
+                        <br/><br/>
+                        <strong>1% → Revolution:</strong> James Watt's separate condenser = small change, huge efficiency, industry transformed.
+                    </p>
+                    <div class="mt-8 flex items-center space-x-2 text-sm">
+                        <span class="bg-gray-700 px-3 py-1 rounded-full">+1%</span>
+                        <span class="text-gray-500">x</span>
+                        <span class="bg-gray-700 px-3 py-1 rounded-full">Time</span>
+                        <span class="text-gray-500">=</span>
+                        <span class="bg-blue-600 text-white px-3 py-1 rounded-full">Big Change</span>
+                    </div>
+                </div>
+
+                <!-- Right Image Column -->
+                <div class="bg-black/20 p-4 rounded-xl">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-[#2d2a26] rounded-lg overflow-hidden text-center shadow-lg">
+                            <img src="https://i.ibb.co/6P2V0YJ/manual-labor.png" alt="Man digging with a shovel" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-bold text-white text-lg">Manual Labor</h3>
+                                <p class="text-gray-300 text-sm mt-2">Manual shovels required a huge amount of effort.</p>
+                            </div>
+                        </div>
+                        <div class="bg-[#c2dce8] rounded-lg overflow-hidden text-center shadow-lg">
+                             <img src="https://i.ibb.co/3kXp45P/steam-engine.png" alt="Steam engine diagram" class="w-full h-48 object-contain p-2">
+                            <div class="p-4">
+                                <h3 class="font-bold text-gray-800 text-lg">The Steam Engine</h3>
+                                <p class="text-gray-600 text-sm mt-2">A new 'shovel' amplified human effort through efficiency.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
