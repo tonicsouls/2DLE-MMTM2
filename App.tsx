@@ -346,7 +346,7 @@ const App = () => {
             
             <header className="sticky top-0 z-30 glass-card">
                 <nav className="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <a href="#" className="font-montserrat text-2xl font-black tracking-wider text-white hover:text-gold transition-colors">
+                    <a href="#" className="font-montserrat text-2xl font-black tracking-wider text-green-500 hover:text-gold transition-colors">
                         DARRYL ERBY
                     </a>
                     <div className="hidden md:flex items-center space-x-8">
@@ -525,7 +525,7 @@ const App = () => {
                                     </button>
                                 </div>
                                 <div className="flex items-center justify-center">
-                                    <img src="https://i.imgur.com/sYmY1OR.png" alt="Career Catalyst Application" className="rounded-xl shadow-lg w-full h-auto object-contain max-h-96" />
+                                    <img src="https://i.imgur.com/tkfs4Ka.png" alt="Career Catalyst Application" className="rounded-xl shadow-lg w-full h-auto object-contain max-h-96" />
                                 </div>
                             </div>
                         </div>
